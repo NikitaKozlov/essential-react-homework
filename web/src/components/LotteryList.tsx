@@ -32,8 +32,8 @@ export const LotteryList = () => {
         maxWidth: '900px',
       }}
     >
-      {lotteries.map((lottery, index) => (
-        <LotteryCard key={index} name={lottery.name} prize={lottery.prize} />
+      {lotteries.map((lottery) => (
+        <LotteryCard key={lottery.id} {...lottery} />
       ))}
     </Box>
   );

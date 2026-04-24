@@ -2,7 +2,12 @@ import type { Lottery } from "../types";
 
 const URL = import.meta.env.VITE_API_URL;
 
-export async function createLottery(lottery: Lottery): Promise<boolean> {
+interface LotteryCreationParams {
+  name: string,
+  prize: string
+}
+
+export async function createLottery(lottery: LotteryCreationParams): Promise<boolean> {
   try {
     await new Promise((resolve) => setTimeout(resolve, 2000)); //Just to see the loading state
     const response = await fetch(`${URL}/lotteries`, {
