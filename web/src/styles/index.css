@@ -1,7 +1,7 @@
 .add-lottery-button {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
+  position: fixed !important;
+  bottom: 16px !important;
+  right: 16px !important;
   background-color: blue !important;
   color: white !important;
 }
