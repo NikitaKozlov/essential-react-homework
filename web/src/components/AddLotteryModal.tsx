@@ -1,12 +1,28 @@
 import { Modal, Box, TextField, Button } from "@mui/material";
 import { useModal } from "../hooks/useModal";
 import { useState } from "react";
-
+import { createLottery } from "../api/createLottery";
+import { LoadingButton } from "@mui/lab";
+import { useSnackbar } from "../hooks/useSnackbar";
 
 export default function AddLotteryModal() {
   const { isOpen, closeModal } = useModal();
+  const [isLoading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [prize, setPrize] = useState("");
+  const { showSnackbar } = useSnackbar();
+
+  const handleAdd = async () => {
+    setLoading(true);
+    const success = await createLottery({ name, prize });
+    setLoading(false);
+    showSnackbar(success);
+    if (success) {
+      setName("");
+      setPrize("");
+      closeModal();
+    }
+  };
 
   return (
     <Modal open={isOpen} onClose={closeModal} >
@@ -32,7 +48,7 @@ export default function AddLotteryModal() {
             setPrize(event.target.value);
           }}
         />
-        <Button variant="contained" disabled={(isInvalid(prize) || isInvalid(name))}>Add</Button>
+        <LoadingButton variant="contained" disabled={(isInvalid(prize) || isInvalid(name))} onClick={handleAdd} loading={isLoading}>Add</LoadingButton>
       </Box>
     </Modal>
   );
