@@ -3,17 +3,22 @@ import AddLotteryModal from './components/AddLotteryModal';
 import AddLotterySnackbar from './components/AddLotterySnackbar';
 import ModalContextProvider from './contexts/ModalContext';
 import SnackbarContextProvider from './contexts/SnackbarContext';
+import LotteriesContextProvider from './contexts/LotteriesContext';
+import { LotteryList } from './components/LotteryList';
 
 function App() {
 
   return (
     <>
       <SnackbarContextProvider>
-        <ModalContextProvider>
-          <AddLotteryButton/>
-          <AddLotteryModal />
-        </ModalContextProvider>
-        <AddLotterySnackbar />
+        <LotteriesContextProvider>
+          <ModalContextProvider>
+            <AddLotteryButton/>
+            <AddLotteryModal />
+            <LotteryList />
+          </ModalContextProvider>
+          <AddLotterySnackbar />
+        </LotteriesContextProvider>
       </SnackbarContextProvider>
     </>
   )

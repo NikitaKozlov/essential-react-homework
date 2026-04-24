@@ -2,27 +2,22 @@ import type { Lottery } from "../types";
 
 const URL = import.meta.env.VITE_API_URL;
 
-export async function createLottery(lottery: Lottery): Promise<boolean> {
+export async function fetchLotteries(): Promise<Lottery[]> {
   try {
     await new Promise((resolve) => setTimeout(resolve, 2000)); //Just to see the loading state
     const response = await fetch(`${URL}/lotteries`, {
-      method: "POST",
+      method: "GET",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...lottery,
-        type: "simple"
-      }),
     });
 
     if (!response.ok) {
-      const error = await response.json();
-      console.log("error: ", error);
-      return false;
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return true;
+    const data = await response.json();
+    return data;
   } catch (e) {
     console.log("error: ", e);
-    return false;
+    return [];
   }
 }
