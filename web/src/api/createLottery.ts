@@ -8,11 +8,21 @@ const URL = import.meta.env.VITE_API_URL;
 export async function createLottery(lottery: Lottery): Promise<boolean> {
   try {
     await new Promise((resolve) => setTimeout(resolve, 2000)); //Just to see the loading state
-    await fetch(`${URL}/lotteries`, {
+    const response = await fetch(`${URL}/lotteries`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(lottery),
+      body: JSON.stringify({
+        ...lottery,
+        type: "simple"
+      }),
     });
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.log("error: ", error);
+      return false;
+    }
+
     return true;
   } catch (e) {
     console.log("error: ", e);
