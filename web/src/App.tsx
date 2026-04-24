@@ -14,11 +14,11 @@ function App() {
     <>
       <SnackbarContextProvider>
         <LotteriesContextProvider>
+          <LotteryList />
           <ModalContextProvider>
             <AddLotteryButton/>
             <AddLotteryModal />
           </ModalContextProvider>
-          <LotteryList />
           <ModalContextProvider>
             <RegisterButton />
             <RegisterForLotteryModal />
