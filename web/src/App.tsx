@@ -5,6 +5,8 @@ import ModalContextProvider from './contexts/ModalContext';
 import SnackbarContextProvider from './contexts/SnackbarContext';
 import LotteriesContextProvider from './contexts/LotteriesContext';
 import { LotteryList } from './components/LotteryList';
+import { RegisterButton } from './components/RegisterButton';
+import RegisterForLotteryModal from './components/RegisterForLotteryModal';
 
 function App() {
 
@@ -15,7 +17,11 @@ function App() {
           <ModalContextProvider>
             <AddLotteryButton/>
             <AddLotteryModal />
-            <LotteryList />
+          </ModalContextProvider>
+          <LotteryList />
+          <ModalContextProvider>
+            <RegisterButton />
+            <RegisterForLotteryModal />
           </ModalContextProvider>
           <AddLotterySnackbar />
         </LotteriesContextProvider>

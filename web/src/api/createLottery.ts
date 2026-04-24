@@ -1,5 +1,3 @@
-import type { Lottery } from "../types";
-
 const URL = import.meta.env.VITE_API_URL;
 
 interface LotteryCreationParams {

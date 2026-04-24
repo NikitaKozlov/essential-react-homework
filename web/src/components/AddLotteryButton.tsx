@@ -5,7 +5,16 @@ export default function AddLotteryButton() {
   const { openModal } = useModal();
 
   return (
-    <Fab variant="extended" className="add-lottery-button" onClick={openModal}>
+    <Fab
+      variant="extended"
+      color="primary"
+      onClick={openModal}
+      sx={{
+        position: 'fixed',
+        bottom: 16,
+        right: 16,
+      }}
+    >
       <Icon>add</Icon>
       ADD LOTTERY
     </Fab>

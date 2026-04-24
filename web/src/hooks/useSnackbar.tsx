@@ -5,8 +5,9 @@ export const useSnackbar = () => {
   const {
     isShown,
     isSuccess,
+    message,
     showSnackbar,
   } = useContext(SnackbarContext);
 
-  return { isShown, isSuccess, showSnackbar };
+  return { isShown, isSuccess, message, showSnackbar };
 };

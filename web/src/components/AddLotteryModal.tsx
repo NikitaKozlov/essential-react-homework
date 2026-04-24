@@ -18,7 +18,10 @@ export default function AddLotteryModal() {
     setLoading(true);
     const success = await createLottery({ name, prize });
     setLoading(false);
-    showSnackbar(success);
+    showSnackbar(
+      success,
+      success ? 'Lottery added successfully!' : 'Failed to add lottery. Please try again.'
+    );
     if (success) {
       setName("");
       setPrize("");
