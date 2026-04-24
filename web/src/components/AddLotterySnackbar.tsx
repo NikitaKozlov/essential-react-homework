@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useSnackbar } from '../hooks/useSnackbar';
 
 const AddLotterySnackbar = () => {
-  const { isShown, isSuccess } = useSnackbar();
+  const { isShown, isSuccess, message } = useSnackbar();
   const [open, setOpen] = useState(false);
 
   const handleClose = (_event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -31,9 +31,7 @@ const AddLotterySnackbar = () => {
         variant="filled"
         sx={{ width: '100%' }}
       >
-        {isSuccess
-          ? 'Lottery added successfully!'
-          : 'Failed to add lottery. Please try again.'}
+        {message}
       </Alert>
     </Snackbar>
   );
