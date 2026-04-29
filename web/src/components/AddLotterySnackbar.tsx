@@ -1,27 +1,20 @@
 import { Alert, Snackbar } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import { useSnackbar } from '../hooks/useSnackbar';
 
 const AddLotterySnackbar = () => {
-  const { isShown, isSuccess } = useSnackbar();
-  const [open, setOpen] = useState(false);
+  const { isShown, isSuccess, hideSnackbar } = useSnackbar();
 
   const handleClose = (_event?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }
-    setOpen(false);
+    hideSnackbar();
   };
-
-  React.useEffect(() => {
-    if (isShown) {
-      setOpen(true);
-    }
-  }, [isShown]);
 
   return (
     <Snackbar
-      open={open}
+      open={isShown}
       autoHideDuration={6000}
       onClose={handleClose}
       anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}

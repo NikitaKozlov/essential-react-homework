@@ -30,7 +30,7 @@ export default function AddLotteryModal() {
         <h2> Add a new lottery </h2>
         <TextField
           error={isInvalid(name) && name.length > 0} 
-          id="standard-basic" 
+          id="input-name" 
           label="Lottery Name" 
           value={name} 
           variant="standard" 
@@ -40,7 +40,7 @@ export default function AddLotteryModal() {
         />
         <TextField
           error={isInvalid(prize) && prize.length > 0 }
-          id="standard-basic" 
+          id="input-prize" 
           label="Lottery Prize" 
           value={prize} 
           variant="standard"
